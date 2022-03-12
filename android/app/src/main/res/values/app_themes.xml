@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.NFWallet" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">#111111</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+</resources>

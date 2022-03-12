@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NFWallet</string>
+    <string name="app_shared_preferences_package">com.subasm.xrpl</string>
+    <string name="app_close">Close</string>
+
+    <string name="app_dirty_changes_title">Unsaved changes</string>
+    <string name="app_dirty_changes_body">Are you sure you want to discard your changed?</string>
+</resources>

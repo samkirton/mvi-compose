@@ -28,7 +28,12 @@ android {
     }
 
     buildFeatures {
-        viewBinding true
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerVersion "1.6.10"
+        kotlinCompilerExtensionVersion "1.2.0-alpha05"
     }
 
     flavorDimensions "app"
@@ -52,13 +57,17 @@ android {
 dependencies {
 
     implementation "androidx.core:core-ktx:1.7.0"
+    /* Is this used? */
     implementation "com.google.android.material:material:1.5.0"
 
+    /* Is this used? */
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
 
+    /* Is this used? */
     implementation "androidx.activity:activity-ktx:1.4.0"
+    /* Is this used? */
     implementation "androidx.fragment:fragment-ktx:1.4.1"
 
     implementation "com.google.dagger:hilt-android:2.41"
@@ -66,6 +75,19 @@ dependencies {
 
     implementation "androidx.room:room-runtime:2.4.2"
     kapt "androidx.room:room-compiler:2.4.2"
+
+    implementation "androidx.compose.ui:ui:1.1.1"
+    implementation "androidx.compose.ui:ui-tooling:1.1.1"
+    implementation "androidx.compose.foundation:foundation:1.1.1"
+    implementation "androidx.compose.material:material:1.1.1"
+    implementation "androidx.compose.material:material-icons-core:1.1.1"
+    implementation "androidx.compose.material:material-icons-extended:1.1.1"
+    implementation "androidx.activity:activity-compose:1.4.0"
+    /* Is this used? */
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1"
+    implementation "androidx.compose.compiler:compiler:1.2.0-alpha05"
+    
+    implementation "org.xrpl:xrpl4j-keypairs:2.0.0"
 
     testImplementation "junit:junit:4.13.2"
     androidTestImplementation "androidx.test.ext:junit:1.1.3"
