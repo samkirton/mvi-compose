@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="entry_title">NFWallet</string>
+    <string name="entry_title">NFGen</string>
     <string name="entry_settings_icon">Settings</string>
     <string name="entry_description">Securely mint, buy, and sell NFTs on the XRPL ledger.</string>
 

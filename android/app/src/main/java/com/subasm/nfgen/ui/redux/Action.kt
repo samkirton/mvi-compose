@@ -1,0 +1,3 @@
+package com.subasm.nfgen.ui.redux
+
+interface Action

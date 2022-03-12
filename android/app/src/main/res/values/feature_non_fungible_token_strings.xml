@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="non_fungible_empty_collection">
+        Your NFT Collection is currently empty, you can get started by minting your first NFT!
+    </string>
+    <string name="non_fungible_mint">Mint NFT</string>
+
+
+</resources>

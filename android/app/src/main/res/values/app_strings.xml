@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">NFWallet</string>
-    <string name="app_database_name">nfwallet</string>
-    <string name="app_shared_preferences_package">com.subasm.nfwallet</string>
+    <string name="app_name">NFGen</string>
+    <string name="app_database_name">nfgen</string>
+    <string name="app_shared_preferences_package">com.subasm.nfgen</string>
+    <string name="app_xrpl_rpc_url">http://xls20-sandbox.rippletest.net:51234</string>
+    <string name="app_xrpl_faucet_url">https://faucet-nft.ripple.com/accounts</string>
+
     <string name="app_close">Close</string>
     <string name="app_back">Go Back</string>
     <string name="app_success">Success</string>
@@ -10,4 +13,7 @@
 
     <string name="app_dirty_changes_title">Unsaved changes</string>
     <string name="app_dirty_changes_body">Are you sure you want to discard your changed?</string>
+
+    <string name="app_error_network">A connection to the XRP network could not be made.</string>
+    <string name="app_error_fatal">The operation could not be completed.</string>
 </resources>
