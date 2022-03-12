@@ -23,7 +23,9 @@ class CreateAddressReducer @Inject constructor(
         previousState: CreateAddressViewState,
         result: CreateAddressResult
     ): CreateAddressViewState = when (result) {
-        CreateAddressResult.Idle -> previousState
+        CreateAddressResult.Idle -> previousState.copy(
+            navigate = CreateAddressViewState.Navigate.Idle
+        )
         is CreateAddressResult.AddressCreated -> previousState.copy(
             view = CreateAddressViewState.View.AddressCreated(
                 result.address,

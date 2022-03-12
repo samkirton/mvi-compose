@@ -23,6 +23,7 @@ fun SingeLineTextField(
             text = it
             onValueChange(it)
         },
-        label = { Text(label) }
+        label = { Text(label) },
+        maxLines = 1
     )
 }

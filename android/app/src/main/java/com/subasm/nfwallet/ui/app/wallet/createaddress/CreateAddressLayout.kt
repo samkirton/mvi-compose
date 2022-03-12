@@ -11,8 +11,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,47 +18,48 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.navigation.NavController
 import com.subasm.nfwallet.R
 import com.subasm.nfwallet.ui.redux.Dispatch
-import com.subasm.nfwallet.ui.redux.Responder
+import com.subasm.nfwallet.ui.redux.composable.ReduxComponent
 import com.subasm.nfwallet.ui.uikit.GoBack
 import com.subasm.nfwallet.ui.uikit.InfoAlert
 import com.subasm.nfwallet.ui.uikit.PrimaryButton
 import com.subasm.nfwallet.ui.uikit.SmallProgressIndicator
 import com.subasm.nfwallet.ui.uikit.SuccessAlert
 import com.subasm.nfwallet.ui.uikit.Toolbar
-import kotlinx.coroutines.flow.StateFlow
 
 @Composable
 fun CreateAddressLayout(
-    viewStateFlow: StateFlow<CreateAddressViewState>,
-    dispatch: Dispatch<CreateAddressAction>,
-    responder: Responder<CreateAddressViewState>
+    viewModel: CreateAddressViewModel,
+    navController: NavController
 ) {
-    val viewState by viewStateFlow.collectAsState()
-    LaunchedEffect(key1 = Unit, block = {
-        dispatch(CreateAddressAction.Start)
-    })
-    LaunchedEffect(viewState) {
-        responder(viewState)
-    }
-    Box(modifier = Modifier.fillMaxSize()) {
-        Icon(
-            painter = painterResource(R.drawable.ic_cta_home_magenta),
-            contentDescription = null,
-            modifier = Modifier.align(Alignment.BottomEnd),
-            tint = Color.Unspecified
-        )
-        Column {
-            Toolbar(
-                title = stringResource(R.string.create_address_title),
-                modifier = Modifier.padding(dimensionResource(R.dimen.padding_large)),
-                goBack = GoBack { dispatch(CreateAddressAction.Back) }
+    ReduxComponent(
+        initialState = CreateAddressViewState(),
+        initialAction = CreateAddressAction.Start,
+        reducer = viewModel
+    ) { viewState, dispatch ->
+        LaunchedEffect(viewState.navigate) {
+            createAddressNavigation(viewState.navigate, dispatch, navController)
+        }
+        Box(modifier = Modifier.fillMaxSize()) {
+            Icon(
+                painter = painterResource(R.drawable.ic_cta_home_magenta),
+                contentDescription = null,
+                modifier = Modifier.align(Alignment.BottomEnd),
+                tint = Color.Unspecified
             )
-            Box(
-                modifier = Modifier.padding(dimensionResource(R.dimen.padding_large))
-            ) {
-                CreateAddressView(viewState.view, dispatch)
+            Column {
+                Toolbar(
+                    title = stringResource(R.string.create_address_title),
+                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_large)),
+                    goBack = GoBack { dispatch(CreateAddressAction.Back) }
+                )
+                Box(
+                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_large))
+                ) {
+                    CreateAddressView(viewState.view, dispatch)
+                }
             }
         }
     }

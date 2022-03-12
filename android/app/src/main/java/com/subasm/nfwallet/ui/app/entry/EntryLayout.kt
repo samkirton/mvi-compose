@@ -17,18 +17,16 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.subasm.nfwallet.R
+import com.subasm.nfwallet.ui.app.AddressNavigationItem
 import com.subasm.nfwallet.ui.uikit.PrimaryButton
 import com.subasm.nfwallet.ui.uikit.SecondaryButton
 import com.subasm.nfwallet.ui.uikit.Toolbar
 import com.subasm.nfwallet.ui.uikit.ToolbarIconButton
 
 @Composable
-fun EntryLayout(
-    goToCreateAddress: () -> Unit,
-    goToImportAddress: () -> Unit,
-    goToSettings: () -> Unit
-) {
+fun EntryLayout(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
         Column {
             Toolbar(
@@ -37,7 +35,9 @@ fun EntryLayout(
                 iconButton = ToolbarIconButton(
                     icon = Icons.Outlined.Settings,
                     contentDescription = stringResource(R.string.entry_settings_icon),
-                    click = goToSettings
+                    click = {
+                        navController.navigate(AddressNavigationItem.EntrySettings.route)
+                    }
                 )
             )
             Text(
@@ -50,7 +50,9 @@ fun EntryLayout(
             )
             PrimaryButton(
                 label = stringResource(R.string.entry_create_address),
-                onClick = goToCreateAddress,
+                onClick = {
+                    navController.navigate(AddressNavigationItem.CreateAddress.route)
+                },
                 modifier = Modifier.padding(
                     top = dimensionResource(R.dimen.padding_mega),
                     start = dimensionResource(R.dimen.padding_large)
@@ -58,7 +60,9 @@ fun EntryLayout(
             )
             SecondaryButton(
                 label = stringResource(R.string.entry_import_address),
-                onClick = goToImportAddress,
+                onClick = {
+                    navController.navigate(AddressNavigationItem.ImportAddress.route)
+                },
                 modifier = Modifier.padding(
                     start = dimensionResource(R.dimen.padding_large)
                 )

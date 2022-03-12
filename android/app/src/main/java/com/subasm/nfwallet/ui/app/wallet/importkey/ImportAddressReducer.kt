@@ -22,7 +22,9 @@ class ImportAddressReducer @Inject constructor(
         previousState: ImportAddressViewState,
         result: ImportAddressResult
     ): ImportAddressViewState = when (result) {
-        ImportAddressResult.Idle -> previousState
+        ImportAddressResult.Idle -> previousState.copy(
+            navigate = ImportAddressViewState.Navigate.Idle
+        )
         ImportAddressResult.DeviceNotSupported -> previousState.copy(
             view = ImportAddressViewState.View.DeviceNotSupported
         )

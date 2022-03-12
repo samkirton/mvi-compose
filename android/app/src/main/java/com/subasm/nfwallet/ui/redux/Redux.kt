@@ -1,44 +1,29 @@
 package com.subasm.nfwallet.ui.redux
 
-import com.subasm.nfwallet.ui.redux.controller.BaseReducer
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.subasm.nfwallet.ui.redux.controller.Reducer
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
 
-interface Redux<C : BaseReducer<A, VS>, A : Action, VS : ViewState> : CoroutineScope {
+interface Redux<A : Action, R : Result, VS : ViewState> {
 
-    val controller: C
+    val reducer: Reducer<A, R, VS>
 
-    val stateFlow: MutableStateFlow<VS>
+    val viewStateFlow: MutableStateFlow<VS>
 
-    fun listenToStates(
+    suspend fun listenToStates(
         prefix: String?,
         initialState: VS,
         interceptors: List<Interceptor> = listOf()
     ) {
-        launch {
-            controller.states(initialState).flowOn(Dispatchers.Default).collect { state ->
-                stateFlow.emit(state)
-                interceptors.forEach {
-                    it.intercept("mxandroid:$prefix", state)
-                }
-            }
-        }
     }
 
-    fun dispatch(action: A) {
-        launch {
-            controller.dispatch(action)
-        }
+    suspend fun dispatch(action: A) {
+        reducer.dispatch(action)
     }
 
-    fun dispatch(action: A, next: () -> Unit) {
-        launch {
-            controller.dispatch(action)
-            next()
-        }
+    suspend fun dispatch(action: A, next: () -> Unit) {
+        reducer.dispatch(action)
+        next()
     }
+
+    fun responder(viewState: VS)
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="address_navigation_fungible">XRP</string>
+    <string name="address_navigation_non_fungible">NFT</string>
+    <string name="address_navigation_settings">Settings</string>
+
+</resources>
