@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.subasm.xrpl", appContext.packageName)
+        assertEquals("com.subasm.nfwallet", appContext.packageName)
     }
 }

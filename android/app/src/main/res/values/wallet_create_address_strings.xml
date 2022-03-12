@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="create_address_title">Create\nAddress</string>
+    <string name="create_address_progress">Creating a new XRPL address&#8230;</string>
+    <string name="create_address_created">XRPL Address Created</string>
+    <string name="create_address_icon_done">Done</string>
+    <string name="create_address_address_label">Address</string>
+    <string name="create_address_seed_label">Seed</string>
+    <string name="create_address_seed_warning">
+        Take careful note of your seed, and never share it with anyone. 🔑 Your seed is the secret key to your XRPL account.
+    </string>
+    <string name="create_address_continue_button">Continue to wallet</string>
+
+</resources>

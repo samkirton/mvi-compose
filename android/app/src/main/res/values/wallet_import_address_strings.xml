@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="import_address_title">Import\nAddress</string>
+    <string name="import_address_input_seed_label">Enter seed</string>
+    <string name="import_address_button">Import</string>
+
+</resources>
